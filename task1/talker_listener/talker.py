@@ -6,8 +6,10 @@ def talker():
     p=rospy.Publisher("chat",String,queue_size=2)
     rospy.init_node("talker")
     rate=rospy.Rate(10)
+    x=0
     while not rospy.is_shutdown():
-        hstr="hello world {}".format(rospy.get_time())
+        x+=1
+        hstr="hello world {}".format(x)
         rospy.loginfo(hstr)
         p.publish(hstr)
         rate.sleep()
